@@ -1,11 +1,9 @@
-FROM maven:3.8.5-openjdk-17-slim AS build
-WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
-
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["sh", "-c", "sleep 10 && java -jar app.jar"]
+COPY pom.xml .
+COPY mvnw .
+COPY .mvn/ .mvn/
+COPY src/ src/
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
+CMD sleep 10 && java -jar .jar
