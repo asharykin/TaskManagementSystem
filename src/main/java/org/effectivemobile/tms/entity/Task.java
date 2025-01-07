@@ -11,7 +11,7 @@ import org.effectivemobile.tms.util.enums.Status;
 import java.util.List;
 
 @Entity
-@Table(name = "tasks")
+@Table(schema = "t", name = "tasks")
 @Getter
 @Setter
 @NoArgsConstructor

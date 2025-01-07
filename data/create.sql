@@ -1,11 +1,19 @@
-CREATE TABLE users (
+CREATE SCHEMA t;
+
+DROP TABLE IF EXISTS t.users;
+
+DROP TABLE IF EXISTS t.tasks;
+
+DROP TABLE IF EXISTS t.comments;
+
+CREATE TABLE t.users (
        id BIGSERIAL PRIMARY KEY,
        username TEXT NOT NULL UNIQUE,
        password TEXT NOT NULL,
        role TEXT NOT NULL CHECK (role IN ('USER', 'ADMIN'))
 );
 
-CREATE TABLE tasks (
+CREATE TABLE t.tasks (
        id BIGSERIAL PRIMARY KEY,
        title TEXT NOT NULL,
        description TEXT,
@@ -15,7 +23,7 @@ CREATE TABLE tasks (
        author_id BIGINT NOT NULL REFERENCES users (id)
 );
 
-CREATE TABLE comments (
+CREATE TABLE t.comments (
       id BIGSERIAL PRIMARY KEY,
       task_id BIGINT NOT NULL REFERENCES tasks (id),
       content TEXT NOT NULL,
