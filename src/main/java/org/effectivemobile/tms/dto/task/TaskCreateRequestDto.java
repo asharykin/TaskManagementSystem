@@ -30,7 +30,7 @@ public class TaskCreateRequestDto {
     @NotNull(message = "Приоритет должен быть выбран")
     private Priority priority;
 
-    @Schema(description = "Исполнитель", example = "2")
+    @Schema(description = "ID исполнителя", example = "2")
     @NotNull(message = "Исполнитель должен быть выбран")
     private Long executorId;
 }

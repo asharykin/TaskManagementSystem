@@ -30,6 +30,6 @@ public class TaskUpdateRequestDto {
     @Schema(description = "Приоритет", example = "LOW/MEDIUM/HIGH")
     private Priority priority;
 
-    @Schema(description = "Исполнитель", example = "2")
+    @Schema(description = "ID исполнителя", example = "2")
     private Long executorId;
 }

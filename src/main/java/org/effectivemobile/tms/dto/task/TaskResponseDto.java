@@ -30,9 +30,9 @@ public class TaskResponseDto {
     @Schema(description = "Приоритет", example = "LOW/MEDIUM/HIGH")
     private Priority priority;
 
-    @Schema(description = "Автор", example = "1")
+    @Schema(description = "ID автора", example = "1")
     private Long authorId;
 
-    @Schema(description = "Исполнитель", example = "2")
+    @Schema(description = "ID исполнителя", example = "2")
     private Long executorId;
 }
