@@ -6,4 +6,4 @@ COPY .mvn/ .mvn/
 COPY src/ src/
 RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
-CMD sleep 10 && java -jar target/tms*.jar
+CMD sleep 5 && java -jar target/tms*.jar
