@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>org.effectivemobile</groupId>
-    <artifactId>tms</artifactId>
+    <artifactId>EffectiveMobileTestTask</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -26,6 +26,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
