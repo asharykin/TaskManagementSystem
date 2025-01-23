@@ -19,13 +19,13 @@ CREATE TABLE t.tasks (
        description TEXT,
        status TEXT NOT NULL CHECK (status IN ('WAITING', 'IN_PROGRESS', 'COMPLETED')),
        priority TEXT NOT NULL CHECK (priority IN ('LOW', 'MEDIUM', 'HIGH')),
-       executor_id BIGINT NOT NULL REFERENCES users (id),
-       author_id BIGINT NOT NULL REFERENCES users (id)
+       executor_id BIGINT NOT NULL REFERENCES t.users (id),
+       author_id BIGINT NOT NULL REFERENCES t.users (id)
 );
 
 CREATE TABLE t.comments (
       id BIGSERIAL PRIMARY KEY,
-      task_id BIGINT NOT NULL REFERENCES tasks (id),
+      task_id BIGINT NOT NULL REFERENCES t.tasks (id),
       content TEXT NOT NULL,
-      author_id INT NOT NULL REFERENCES users (id)
+      author_id INT NOT NULL REFERENCES t.users (id)
 );
