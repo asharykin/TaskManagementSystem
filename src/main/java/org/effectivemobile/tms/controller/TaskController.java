@@ -90,7 +90,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(implementation = TaskResponseDto.class)))
             })
     @PutMapping(path = "/{id}")
-    public ResponseEntity<TaskResponseDto> update(@PathVariable("id") Long id, @RequestBody TaskUpdateRequestDto dto) {
+    public ResponseEntity<TaskResponseDto> update(@PathVariable("id") Long id, @RequestBody @Valid TaskUpdateRequestDto dto) {
         TaskResponseDto task = taskService.update(id, dto);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
