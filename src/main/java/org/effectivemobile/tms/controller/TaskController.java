@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.effectivemobile.tms.dto.task.TaskCreateRequestDto;
 import org.effectivemobile.tms.dto.task.TaskResponseDto;
@@ -55,7 +56,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(implementation = TaskResponseDto.class)))
             })
     @GetMapping(path = "/{id}")
-    public ResponseEntity<TaskResponseDto> getById(@PathVariable Long id) {
+    public ResponseEntity<TaskResponseDto> getById(@PathVariable @Positive Long id) {
         TaskResponseDto task = taskService.getById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
@@ -78,7 +79,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(implementation = TaskResponseDto.class)))
             })
     @PatchMapping(path = "/{id}")
-    public ResponseEntity<TaskResponseDto> updateStatus(@PathVariable("id") Long id, @RequestBody @Valid TaskUpdateStatusRequestDto dto) {
+    public ResponseEntity<TaskResponseDto> updateStatus(@PathVariable("id") @Positive Long id, @RequestBody @Valid TaskUpdateStatusRequestDto dto) {
         TaskResponseDto task = taskService.updateStatus(id, dto);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
@@ -90,7 +91,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(implementation = TaskResponseDto.class)))
             })
     @PutMapping(path = "/{id}")
-    public ResponseEntity<TaskResponseDto> update(@PathVariable("id") Long id, @RequestBody @Valid TaskUpdateRequestDto dto) {
+    public ResponseEntity<TaskResponseDto> update(@PathVariable("id") @Positive Long id, @RequestBody @Valid TaskUpdateRequestDto dto) {
         TaskResponseDto task = taskService.update(id, dto);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
@@ -102,7 +103,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(defaultValue = "Задача успешно удалена")))
             })
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+    public ResponseEntity<String> delete(@PathVariable("id") @Positive Long id) {
         taskService.delete(id);
         return new ResponseEntity<>("Задача успешно удалена", HttpStatus.OK);
     }

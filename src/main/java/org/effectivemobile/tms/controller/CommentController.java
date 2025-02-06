@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.effectivemobile.tms.dto.comment.CommentRequestDto;
 import org.effectivemobile.tms.dto.comment.CommentResponseDto;
@@ -52,7 +53,7 @@ public class CommentController {
                             content = @Content(schema = @Schema(implementation = CommentResponseDto.class)))
             })
     @PostMapping
-    public ResponseEntity<CommentResponseDto> create(@PathVariable("taskId") Long taskId, @RequestBody @Valid CommentRequestDto dto) {
+    public ResponseEntity<CommentResponseDto> create(@PathVariable("taskId") @Positive Long taskId, @RequestBody @Valid CommentRequestDto dto) {
         CommentResponseDto comment = commentService.create(taskId, dto);
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
