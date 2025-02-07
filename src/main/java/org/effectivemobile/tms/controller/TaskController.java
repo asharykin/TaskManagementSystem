@@ -56,7 +56,7 @@ public class TaskController {
                             content = @Content(schema = @Schema(implementation = TaskResponseDto.class)))
             })
     @GetMapping(path = "/{id}")
-    public ResponseEntity<TaskResponseDto> getById(@PathVariable @Positive Long id) {
+    public ResponseEntity<TaskResponseDto> getById(@PathVariable("id") @Positive Long id) {
         TaskResponseDto task = taskService.getById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
