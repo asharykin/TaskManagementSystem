@@ -1,6 +1,6 @@
 package org.effectivemobile.tms.util.specification;
 
-import jakarta.persistence.criteria.Join;
+import javax.persistence.criteria.Join;
 import org.effectivemobile.tms.entity.Task;
 import org.effectivemobile.tms.entity.User;
 import org.springframework.data.jpa.domain.Specification;

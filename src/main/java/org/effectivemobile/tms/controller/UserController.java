@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.effectivemobile.tms.dto.user.UserResponseDto;
 import org.effectivemobile.tms.service.UserService;
@@ -49,7 +48,7 @@ public class UserController {
                             content = @Content(schema = @Schema(implementation = UserResponseDto.class)))
             })
     @GetMapping(path = "/{id}")
-    public ResponseEntity<UserResponseDto> getById(@PathVariable("id") @Positive Long id) {
+    public ResponseEntity<UserResponseDto> getById(@PathVariable("id") Long id) {
         UserResponseDto user = userService.getById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

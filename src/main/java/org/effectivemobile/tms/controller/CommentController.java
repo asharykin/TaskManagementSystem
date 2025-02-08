@@ -8,8 +8,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.effectivemobile.tms.dto.comment.CommentRequestDto;
 import org.effectivemobile.tms.dto.comment.CommentResponseDto;
@@ -18,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Tag(name = "Комментарии к задачам")
@@ -53,7 +52,7 @@ public class CommentController {
                             content = @Content(schema = @Schema(implementation = CommentResponseDto.class)))
             })
     @PostMapping
-    public ResponseEntity<CommentResponseDto> create(@PathVariable("taskId") @Positive Long taskId, @RequestBody @Valid CommentRequestDto dto) {
+    public ResponseEntity<CommentResponseDto> create(@PathVariable("taskId") Long taskId, @RequestBody @Valid CommentRequestDto dto) {
         CommentResponseDto comment = commentService.create(taskId, dto);
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }

@@ -1,6 +1,6 @@
 package org.effectivemobile.tms.service;
 
-import jakarta.persistence.EntityNotFoundException;
+import javax.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.effectivemobile.tms.dto.task.TaskCreateRequestDto;
 import org.effectivemobile.tms.dto.task.TaskResponseDto;
