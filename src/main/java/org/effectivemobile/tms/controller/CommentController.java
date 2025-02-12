@@ -57,12 +57,12 @@ public class CommentController {
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
-    @Operation(summary = "Обновить комментарий к задаче",
+    @Operation(summary = "Редактировать комментарий к своей задаче (для исполнителей), к любой задаче (для администраторов)",
             parameters = {
                     @Parameter(name = "taskId", in = ParameterIn.PATH, description = "ID задачи"),
                     @Parameter(name = "commentId", in = ParameterIn.PATH, description = "ID комментария")},
             responses = {
-                    @ApiResponse(responseCode = "200", description = "Комментарий обновлен",
+                    @ApiResponse(responseCode = "200", description = "OK",
                             content = @Content(schema = @Schema(implementation = CommentResponseDto.class)))
             })
     @PutMapping("/{commentId}")
@@ -72,12 +72,13 @@ public class CommentController {
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
 
-    @Operation(summary = "Удалить комментарий к задаче",
+    @Operation(summary = "Удалить комментарий к своей задаче (для исполнителей), к любой задаче (для администраторов)",
             parameters = {
                     @Parameter(name = "taskId", in = ParameterIn.PATH, description = "ID задачи"),
                     @Parameter(name = "commentId", in = ParameterIn.PATH, description = "ID комментария")},
             responses = {
-                    @ApiResponse(responseCode = "204", description = "Комментарий успешно удален"),
+                    @ApiResponse(responseCode = "204", description = "OK",
+                            content = @Content(schema = @Schema(defaultValue = "Комментарий успешно удалён"))),
             })
     @DeleteMapping("/{commentId}")
     public ResponseEntity<String> delete(@PathVariable("taskId") Long taskId, @PathVariable("commentId") Long commentId) {
